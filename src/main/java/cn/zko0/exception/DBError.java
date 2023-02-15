@@ -15,9 +15,25 @@ import lombok.Getter;
 @Getter
 public enum DBError {
 
-    READ_FILE_FALL("读取文件失败"),
-    BAD_FILE("文件损坏");
+    READ_FILE_FALL(new DBException("读取文件失败")),
+    BAD_FILE(new DBException("文件损坏")),
+    WRITE_FILE_FALL(new DBException("写入文件失败")),
 
-    private String message;
+    FILE_DOESNT_EXIST(new DBException("文件不存在")),
+
+    UPDATE_XID_COUNTER_AND_HEADER_FALL(new DBException("更新XID总数和文件Header失败")),
+
+    FILE_ALREADY_EXIST(new DBException("文件已存在")),
+
+    TM_CREATE_FALL(new DBException("TM创建失败")),
+
+    FORCE_FALL(new DBException("强制数据更新磁盘失败")),
+
+    TM_CLOSE_FALL(new DBException("TM关闭失败")),
+
+
+    FILE_PERMESSION_LAKE(new DBException("缺少文件权限"));
+
+    private DBException dbException;
 
 }

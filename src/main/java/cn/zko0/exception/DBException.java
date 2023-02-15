@@ -6,8 +6,7 @@ package cn.zko0.exception;
  * @description
  */
 public class DBException extends Exception{
-
-    public DBException(DBError error) {
-        super(error.getMessage());
+    public DBException(String message) {
+        super(message);
     }
 }
